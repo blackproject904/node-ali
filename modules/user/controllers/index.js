@@ -1,30 +1,18 @@
+const UserServices = require('@user/services')
 class UserController{
     constructor(){
+        this.userServices = new UserServices()
         this.index = this.index.bind(this)
+        this.create = this.create.bind(this)
         this.getUserById = this.getUserById.bind(this)
     }
-
-    async index(req,res){
-        res.send({
-            message: "testing"
-        })
-    }
-
-    async getUserById(req,res){
-        if(req.params.id!==null){
-            res.send({
-                message: "returned id: "+req.params.id
-            })
-        }
-    }
     async create(req,res){
-        if(req.params.id!==null){
+        if(req.body.data!=null){
             res.send({
-                message: "create new user"
+                data: await this.userServices.createUser(req.body.data)
             })
         }
     }
-
 }
 
 module.exports = UserController
