@@ -6,8 +6,7 @@ const server = require('@config/config.js')
 const sequelize = require('sequelize')
 
 const app = express()
-
-//routes(app)
+routes(app)
 
 const host = process.env.HOST || server.host
 const port = process.env.PORT || server.port

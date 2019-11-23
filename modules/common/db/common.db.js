@@ -1,7 +1,7 @@
 const mysql = require('promise-mysql');
 // // const Logger = require('@lib-logger/internal.logger');
 
-const config = require('@config').mysql;
+const config = require('@config/config.js').mysql;
 
 class DBConnection {
   constructor() {
