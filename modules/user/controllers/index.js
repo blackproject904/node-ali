@@ -13,6 +13,14 @@ class UserController{
             })
         }
     }
+
+    // async getUser(req,res){
+    //     if(req.params.id!=null){
+    //         res.send({
+    //             data: await this.userServices.getUser(req.params.id)
+    //         })
+    //     }
+    // }
 }
 
 module.exports = UserController

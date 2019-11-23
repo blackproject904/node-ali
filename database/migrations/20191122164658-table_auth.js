@@ -11,7 +11,7 @@ module.exports = {
             },
         user: {
                 type: Sequelize.STRING,
-                uniqueKey: true
+                unique: true
               },
         email: Sequelize.STRING
       });

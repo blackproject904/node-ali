@@ -21,6 +21,7 @@
   },
   "_moduleAliases": {
     "@root": ".",
+    "@common": "modules/common",
     "@config": "config",
     "@user": "modules/user"
   }
