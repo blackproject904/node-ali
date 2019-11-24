@@ -6,7 +6,9 @@ module.exports = (app)=>{
     // app.route('/')
     //     .get(userController.index)
 
-    app.route('/user').post(userController.create)
+    app.route('/user')
+    .get(userController.index)
+    .post(userController.create)
 
     app.route('/user/:user')
         .get(userController.getUser)
