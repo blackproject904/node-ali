@@ -7,9 +7,9 @@ module.exports = (app)=>{
     //     .get(userController.index)
 
     app.route('/user')
-    .get(userController.index)
-    .post(userController.create)
+        .get(userController.index)
+        .post(userController.create)
 
-    app.route('/user/:user')
+    app.route('/user/:id')
         .get(userController.getUser)
 }

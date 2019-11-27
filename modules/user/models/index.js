@@ -20,7 +20,7 @@ class UserModels{
   }
 
   async getUserById(id){
-    const query = `SELECT * FROM auth WHERE id=${id}`
+    const query = `SELECT * FROM auth WHERE id='${id}'`
     return await this.dbo.query(query)
   }
 }
