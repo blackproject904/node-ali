@@ -6,11 +6,15 @@ module.exports = {
     [
       {
         user: 'Sayed Khaidir Ali',
-        email: 'blackproject904@gmail.com'
+        email: 'blackproject904@gmail.com',
+        password: '1234567890',
+        token: 'n/a'
       },
       {
         user: 'oplovers',
-        email: 'ugrond@gmail.com'
+        email: 'ugrond@gmail.com',
+        password: '1234567890',
+        token: 'n/a'
       }
     ], {});
   },

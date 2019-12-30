@@ -1,6 +1,7 @@
 const UserModels = require('@user/models')
 const HttpStatus = require('http-status-codes')
 const Validator = require('fastest-validator')
+const crypt = require('bcryptjs')
 class UserServices{
   constructor(){
     this.userModels = new UserModels()
@@ -9,6 +10,10 @@ class UserServices{
       user: {
         type: 'String',
         min: 5
+      },
+      password: {
+        type: 'String',
+        min: 8
       }
     }
   }
@@ -23,7 +28,8 @@ class UserServices{
   async createUser(data){
     const userData = {
       user: data.user,
-      email: data.email
+      email: data.email,
+      password: crypt.hash(data.password,10)
     }
 
     const isValid = this.validator.validate(userData,this.UserSchema)
@@ -83,10 +89,6 @@ class UserServices{
       ]
     }
     return true
-  }
-
-  async getOAUTH(userData){
-    const 
   }
 }
 

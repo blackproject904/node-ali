@@ -2,7 +2,7 @@ require('module-alias/register')
 
 const express = require('express')
 const routes = require('./routes')
-const server = require('@config')
+const server = require('@config/server.js')
 const bodyParser = require('body-parser')
 const Sequelize = require('sequelize')
 
