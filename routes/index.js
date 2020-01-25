@@ -1,15 +1,5 @@
-const UserController = require('@user/controllers')
+const UserController = require('@user/routers')
 
-module.exports = (app)=>{
-    const userController = new UserController()
-
-    // app.route('/')
-    //     .get(userController.index)
-
-    app.route('/user')
-        .get(userController.index)
-        .post(userController.create)
-
-    app.route('/user/:id')
-        .get(userController.getUser)
+module.exports = app=>{
+    app.use('/user',UserController)
 }
