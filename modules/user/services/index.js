@@ -8,12 +8,15 @@ class UserServices{
     this.validator = new Validator()
     this.UserSchema = {
       user: {
-        type: 'String',
+        type: 'string',
         min: 5
       },
       password: {
-        type: 'String',
+        type: 'string',
         min: 8
+      },
+      email:{
+        type: 'email'
       }
     }
   }
@@ -29,14 +32,14 @@ class UserServices{
     const userData = {
       user: data.user,
       email: data.email,
-      password: crypt.hash(data.password,10)
+      password: await crypt.hash(data.password,10)
     }
 
-    const isValid = this.validator.validate(userData,this.UserSchema)
+    const isValid = await this.validator.validate(userData,this.UserSchema)
     if(!isValid){
       return {
         status: HttpStatus.BAD_REQUEST,
-        error: {
+        data: {
           error_code: 'FORM_VALIDATION',
           message: isValid
         }
@@ -53,14 +56,19 @@ class UserServices{
       }
       return { 
         status: HttpStatus.INTERNAL_SERVER_ERROR, 
-        error:{
-          error_code: 'FORM_VALIDATION',
+        data:{
+          error_code: 'DUPLICATE_ENTRY',
+          message: result
         }
       }
-    }
-    return {
-      status: HttpStatus.BAD_REQUEST,
-      message: 'user is already exists'
+    }else{
+      return {
+        status: HttpStatus.BAD_REQUEST,
+        data: {
+          error_code: 'DATA_VALIDATION',
+          message: isAvailable
+        }
+      }
     }
   }
 
@@ -81,6 +89,7 @@ class UserServices{
 
   async checkUserAvailablity(username){
     const result = await this.userModels.getUser(username)
+    console.log(result)
     if(result.length>0){
       return [
         {
@@ -88,7 +97,7 @@ class UserServices{
         }
       ]
     }
-    return true
+    return false
   }
 }
 

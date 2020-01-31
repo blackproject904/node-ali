@@ -27,6 +27,7 @@ services:
             - DB_USER=root
             - DB_PASS=Port:445
             - DB_DB=otp_testing
+            - DB_PORT=3306
         depends_on: 
             - db
         networks:

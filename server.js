@@ -1,5 +1,5 @@
 require('module-alias/register')
-
+require('dotenv').config()
 const express = require('express')
 const routes = require('./routes')
 const server = require('@config/server.js')
