@@ -15,7 +15,7 @@ class UserModels{
   }
 
   async getUser(user){
-    const query = `SELECT * FROM auth WHERE user=${user}`
+    const query = `SELECT * FROM auth WHERE user='${user}'`
     return await this.dbo.query(query)
   }
 

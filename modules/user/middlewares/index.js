@@ -4,6 +4,7 @@ const UserModel = require('@user/models')
 class UserMiddleware{
     constructor(){
         this.userModel = new UserModel()
+        this.auth = this.auth.bind(this)
     }
 
     async auth(req,res,next) {
